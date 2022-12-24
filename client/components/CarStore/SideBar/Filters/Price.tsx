@@ -5,7 +5,7 @@ const Price = () => {
     <div className="mb-6">
       <p className="text-[14px] border border-neutralGreyLight p-4 mb-4">
         Find out if you're eligible for car finance in minutes, with no impact
-        on your credit score.{" "}
+        on your credit score.
         <span className="text-primaryMain font-bold ">
           Check your eligibility
         </span>

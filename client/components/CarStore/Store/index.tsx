@@ -9,7 +9,7 @@ const Store = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getCars());
-  }, []);
+  }, [dispatch]);
 
   const { cars } = useAppSelector((state) => state.car);
 
