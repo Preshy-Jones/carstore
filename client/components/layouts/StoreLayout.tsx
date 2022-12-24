@@ -6,14 +6,14 @@ import Navbar from "./NavBar";
 
 const StoreLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="grid grid-cols-10">
-      <div className=" col-start-1 col-end-11 ">
+    <div className="grid grid-cols-14">
+      <div className=" col-start-1 col-end-15 ">
         <Navbar />
       </div>
-      <div className=" col-start-1 col-end-3 ">
+      <div className=" col-start-1 col-end-4 ">
         <SideBar />
       </div>
-      <main className="col-start-3 col-end-11">{children}</main>
+      <main className="col-start-4 col-end-15">{children}</main>
       <Footer />
     </div>
   );

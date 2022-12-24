@@ -14,4 +14,17 @@
     height: 1rem;
     vertical-align: middle;
   }
+  .selectbox{
+    appearance: none;
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1.25;
+    margin: 0px;
+    padding: calc(0.875rem - 1px) calc(1em + 1.75rem) calc(0.875rem - 1px) calc(0.875rem - 1px);
+    border: 1px solid var(--borderMain);
+    border-radius: 0.3125rem;
+    background-color: var(--backgroundMain);
+    cursor: pointer;
+    overflow: visible !important;
+  }
 }

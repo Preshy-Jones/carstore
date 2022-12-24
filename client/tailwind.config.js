@@ -12,6 +12,7 @@ module.exports = {
         primaryMain: "#D14532",
         primaryLight: "#E8A298",
         borderMain: "#ACBEB1",
+        neutralGreyLight:"#DDDDDD"
       },
       fontFamily: {
         body: ["Montserrat"],
@@ -30,7 +31,8 @@ module.exports = {
       boxShadow: {
         card: "0px 4px 10px 5px rgba(230, 230, 230, 0.5)",
         bigCard: "0px 4px 10px 5px rgba(219, 219, 219, 0.25)",
-        cardShadow:"rgb(0 0 0 / 16%) 0px 6px 12px 0px, rgb(202 202 202 / 26%) 0px 0px 6px 0px, rgb(202 202 202 / 16%) 0px -1px 4px 0px"
+        cardShadow:
+          "rgb(0 0 0 / 16%) 0px 6px 12px 0px, rgb(202 202 202 / 26%) 0px 0px 6px 0px, rgb(202 202 202 / 16%) 0px -1px 4px 0px",
       },
       borderRadius: {
         primary: "1.875rem",
@@ -95,6 +97,8 @@ module.exports = {
         primary: "28% 0",
       },
       gridTemplateColumns: {
+        13: "repeat(13, minmax(0, 1fr))",
+        14: "repeat(14, minmax(0, 1fr))",
         "3a": "repeat(3, minmax(0, auto))",
         "6a": "repeat(6, minmax(0, auto))",
         "7a": "repeat(7, minmax(0, auto))",
@@ -103,6 +107,13 @@ module.exports = {
         "10s": "repeat(10, 1fr)",
         "13s": "repeat(13, 1fr)",
         "14s": "repeat(14, 1fr)",
+      },
+      gridColumnEnd: {
+        13: "13",
+        14: "14",
+        15: "15",
+        16: "16",
+        17: "17",
       },
     },
   },

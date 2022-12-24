@@ -42,11 +42,42 @@ export const getCarsHandler = async (
   next: NextFunction
 ) => {
   try {
-    const cars = await CarModel.find({});
+    const { model, make, year } = req.query;
+
+    const minPrice = parseInt(req.query.minPrice as string);
+    const maxPrice = parseInt(req.query.maxPrice as string);
+
+    interface Filter {
+      model?: string;
+      make?: string;
+      year?: string;
+      price?: { $gt: number; $lt: number };
+    }
+    const filter: Record<string, any> = {};
+    if (model) {
+      filter["model"] = model as string;
+    }
+    if (make) {
+      filter["make"] = make as string;
+    }
+    if (year) {
+      filter["year"] = year as string;
+    }
+    if (minPrice && maxPrice) {
+      filter["price"] = { $gt: minPrice, $lt: maxPrice };
+    } else if (minPrice) {
+      filter["price"] = { $gt: minPrice };
+    } else if (maxPrice) {
+      filter["price"] = { $lt: maxPrice };
+    }
+
+    const cars = await CarModel.find(filter);
     res.status(200).send({
       success: true,
       message: "Cars fetched successfully",
       cars,
+      model,
+      make,
     });
   } catch (err) {
     next(err);
