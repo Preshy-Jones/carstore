@@ -1,5 +1,8 @@
 import { Request, Response, NextFunction } from "express";
-import CarModel from "../../models/car";
+import { ConflictError } from "../../errors";
+import Car from "../../models/car";
+import CarMake from "../../models/make";
+import CarModel from "../../models/model";
 import { CreateCarInput, GetCarInput } from "../../schema/car.schema";
 
 export const createCarHandler = async (
@@ -8,7 +11,7 @@ export const createCarHandler = async (
   next: NextFunction
 ) => {
   try {
-    const car = await CarModel.create(req.body);
+    const car = await Car.create(req.body);
     res.status(201).send({
       success: true,
       message: "Car created successfully",
@@ -25,7 +28,7 @@ export const getCarHandler = async (
   next: NextFunction
 ) => {
   try {
-    const car = await CarModel.findById(req.params.carId);
+    const car = await Car.findById(req.params.carId);
     res.status(200).send({
       success: true,
       message: "Car fetched successfully",
@@ -54,7 +57,7 @@ export const getCarsHandler = async (
       price?: { $gt: number; $lt: number };
     }
     const filter: Record<string, any> = {};
-    if (model) {
+    if (model || model) {
       filter["model"] = model as string;
     }
     if (make) {
@@ -71,13 +74,135 @@ export const getCarsHandler = async (
       filter["price"] = { $lt: maxPrice };
     }
 
-    const cars = await CarModel.find(filter);
+    const filterFormtatted = {
+      ...filter,
+      ...(filter.price && {
+        minPrice: filter.price.$gt,
+        maxPrice: filter.price.$lt,
+      }),
+    };
+
+    const { ["price"]: price, ...filterPayload } = filterFormtatted;
+
+    const cars = await Car.find(filter);
     res.status(200).send({
       success: true,
       message: "Cars fetched successfully",
       cars,
+      filterPayload,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const createModelHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  console.log("hello");
+
+  try {
+    const foundModel = await CarModel.findOne({ name: req.body.name });
+    if (foundModel) {
+      throw new ConflictError("Model already exist");
+    }
+
+    const model = await CarModel.create(req.body);
+    res.status(201).send({
+      success: true,
+      message: "Model created successfully",
       model,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getModelsHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    console.log("hello");
+    const models = await CarModel.find().populate("makes");
+    res.status(200).send({
+      success: true,
+      message: "Models fetched successfully",
+      models,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getSingleModelHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const car = await CarModel.findById(req.params.carId);
+    res.status(200).send({
+      success: true,
+      message: "Car fetched successfully",
+      car,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const createMakeHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    console.log("hello");
+
+    const { makeName, modelName } = req.body;
+    const foundMake = await CarMake.findOne({
+      name: makeName,
+      modelName: modelName,
+    });
+    if (foundMake) {
+      throw new ConflictError("Make already exists");
+    }
+
+    const foundModel = await CarModel.findOne({ name: modelName });
+    if (!foundModel) {
+      throw new ConflictError("Model does not exist");
+    }
+
+    const make = await CarMake.create({
+      name: makeName,
+      modelName: foundModel.name,
+      model: foundModel,
+    });
+    res.status(201).send({
+      success: true,
+      message: "Make created successfully",
       make,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getMakeHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const car = await CarMake.findById(req.params.carId);
+    res.status(200).send({
+      success: true,
+      message: "Car fetched successfully",
+      car,
     });
   } catch (err) {
     next(err);

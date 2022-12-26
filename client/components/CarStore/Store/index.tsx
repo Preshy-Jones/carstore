@@ -8,7 +8,15 @@ import Sorter from "./Sorter";
 const Store = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getCars());
+    dispatch(
+      getCars({
+        model: "",
+        make: "",
+        year: "",
+        minPrice: 0,
+        maxPrice: 0,
+      })
+    );
   }, [dispatch]);
 
   const { cars } = useAppSelector((state) => state.car);
