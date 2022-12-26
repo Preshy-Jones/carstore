@@ -5,7 +5,9 @@ import {
   createModelHandler,
   getCarHandler,
   getCarsHandler,
+  getMakesHandler,
   getModelsHandler,
+  getSingleMakeHandler,
   getSingleModelHandler,
 } from "../controllers/store";
 import validateResource from "../middlewares/validateResource";
@@ -21,8 +23,8 @@ router.post("/model", createModelHandler);
 router.get("/models", getModelsHandler);
 router.get("/models/model/:modelId", getSingleModelHandler);
 
-router.post("/make", createMakeHandler);
-// router.get("/make", getMakesHandler);
-// router.get("/make/:makeId", getSingleMakeHandler);
+router.post("/makes", createMakeHandler);
+router.get("/makes", getMakesHandler);
+router.get("/makes/make/:makeId", getSingleMakeHandler);
 
 module.exports = router;

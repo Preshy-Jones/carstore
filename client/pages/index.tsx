@@ -18,12 +18,12 @@ export default function Home() {
       </Head>
       <main className="py-7 flex justify-center font-robotoserif">
         <div className="w-[90%]">
-          <div className="flex">
+          <div className="flex mb-3">
             <h3 className="text-primaryMain font-semibold">Home</h3>
             <span className="text-primaryMain mx-4">|</span>
             <h3 className="font-semibold">User cars</h3>
           </div>
-          <h1 className="text-[2.225rem] font-semibold">
+          <h1 className="text-[2.225rem] font-semibold mb-3">
             Used cars for sale or on finance
           </h1>
           <p>

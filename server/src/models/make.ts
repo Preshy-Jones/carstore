@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import slugify from "slugify";
 
 const { Schema } = mongoose;
 
@@ -11,17 +12,26 @@ const makeSchema = new Schema(
     model: {
       type: Schema.Types.ObjectId,
       ref: "Model",
-      required: true,
     },
     modelName: {
       type: String,
       required: true,
+    },
+    slug: {
+      type: String,
+      required: true,
+      unique: true,
     },
   },
   {
     timestamps: true,
   }
 );
+
+makeSchema.pre("validate", function (next) {
+  this.slug = slugify(this.name, { lower: true, strict: true });
+  next();
+});
 
 const CarMake = mongoose.model("Make", makeSchema);
 

@@ -4,6 +4,9 @@ import Car from "../../models/car";
 import CarMake from "../../models/make";
 import CarModel from "../../models/model";
 import { CreateCarInput, GetCarInput } from "../../schema/car.schema";
+import mongoose from "mongoose";
+
+const toId = mongoose.Types.ObjectId;
 
 export const createCarHandler = async (
   req: Request<{}, {}, CreateCarInput["body"]>,
@@ -47,6 +50,8 @@ export const getCarsHandler = async (
   try {
     const { model, make, year } = req.query;
 
+    console.log(typeof make);
+
     const minPrice = parseInt(req.query.minPrice as string);
     const maxPrice = parseInt(req.query.maxPrice as string);
 
@@ -69,6 +74,7 @@ export const getCarsHandler = async (
     if (minPrice && maxPrice) {
       filter["price"] = { $gt: minPrice, $lt: maxPrice };
     } else if (minPrice) {
+      console.log("hello");
       filter["price"] = { $gt: minPrice };
     } else if (maxPrice) {
       filter["price"] = { $lt: maxPrice };
@@ -89,7 +95,7 @@ export const getCarsHandler = async (
       success: true,
       message: "Cars fetched successfully",
       cars,
-      filterPayload,
+      filter: filterPayload,
     });
   } catch (err) {
     next(err);
@@ -101,8 +107,6 @@ export const createModelHandler = async (
   res: Response,
   next: NextFunction
 ) => {
-  console.log("hello");
-
   try {
     const foundModel = await CarModel.findOne({ name: req.body.name });
     if (foundModel) {
@@ -126,7 +130,6 @@ export const getModelsHandler = async (
   next: NextFunction
 ) => {
   try {
-    console.log("hello");
     const models = await CarModel.find().populate("makes");
     res.status(200).send({
       success: true,
@@ -144,10 +147,10 @@ export const getSingleModelHandler = async (
   next: NextFunction
 ) => {
   try {
-    const car = await CarModel.findById(req.params.carId);
+    const car = await CarModel.findById(req.params.modelId).populate("makes");
     res.status(200).send({
       success: true,
-      message: "Car fetched successfully",
+      message: "Model fetched successfully",
       car,
     });
   } catch (err) {
@@ -161,8 +164,6 @@ export const createMakeHandler = async (
   next: NextFunction
 ) => {
   try {
-    console.log("hello");
-
     const { makeName, modelName } = req.body;
     const foundMake = await CarMake.findOne({
       name: makeName,
@@ -179,8 +180,16 @@ export const createMakeHandler = async (
 
     const make = await CarMake.create({
       name: makeName,
-      modelName: foundModel.name,
-      model: foundModel,
+      modelName: modelName,
+      model: foundModel._id,
+    }).then((make) => {
+      return CarModel.findByIdAndUpdate(
+        foundModel._id,
+        {
+          $push: { makes: make._id },
+        },
+        { new: true, useFindAndModify: false }
+      );
     });
     res.status(201).send({
       success: true,
@@ -192,7 +201,20 @@ export const createMakeHandler = async (
   }
 };
 
-export const getMakeHandler = async (
+export const getMakesHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const makes = await CarMake.find().populate("model");
+  res.status(200).send({
+    success: true,
+    message: "Makes fetched successfully",
+    makes,
+  });
+};
+
+export const getSingleMakeHandler = async (
   req: Request,
   res: Response,
   next: NextFunction

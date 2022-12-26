@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getCars } from "../../../features/car/carSlice";
+import { getCars, getModels } from "../../../features/car/carSlice";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import Car from "./Car";
 import ResultInfo from "./ResultInfo";
@@ -17,6 +17,7 @@ const Store = () => {
         maxPrice: 0,
       })
     );
+    dispatch(getModels());
   }, [dispatch]);
 
   const { cars } = useAppSelector((state) => state.car);

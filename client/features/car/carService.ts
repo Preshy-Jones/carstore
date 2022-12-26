@@ -16,8 +16,16 @@ export const fetchCars = async (
   return response.data;
 };
 
-const blogService = {
-  fetchCars,
+export const fetchModels = async () => {
+  const response = await client().get(ENDPOINTS.GETMODELS);
+  console.log(response);
+
+  return response.data;
 };
 
-export default blogService;
+const carService = {
+  fetchCars,
+  fetchModels,
+};
+
+export default carService;

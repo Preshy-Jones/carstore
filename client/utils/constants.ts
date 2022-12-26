@@ -6,6 +6,7 @@ export enum Links {
 
 export enum ENDPOINTS {
   GETCARS = "/",
+  GETMODELS = "/models",
 }
 
 export const getCars = (

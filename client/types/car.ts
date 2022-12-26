@@ -9,6 +9,23 @@ export interface Car {
   model: string;
   make: string;
   milleage: number;
-  price:number;
-  installment:number;
+  price: number;
+  installment: number;
+}
+
+export interface CarModel {
+  _id: string;
+  name: string;
+  makes: CarMake[];
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface CarMake {
+  _id: string;
+  name: string;
+  slug: string;
+  modelName: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
