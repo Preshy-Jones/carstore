@@ -12,8 +12,9 @@ export enum ENDPOINTS {
 export const getCars = (
   model: string,
   make: string,
-  year: string,
+  minYear: string,
+  maxYear: string,
   minPrice: number,
   maxPrice: number
 ) =>
-  `/?model=${model}&make=${make}&year=${year}&minPrice=${minPrice}&maxPrice=${maxPrice}`;
+  `/?model=${model}&make=${make}&minYear=${minYear}&maxYear=${maxYear}&minPrice=${minPrice}&maxPrice=${maxPrice}`;

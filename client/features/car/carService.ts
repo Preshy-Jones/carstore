@@ -4,12 +4,13 @@ import { ENDPOINTS, getCars } from "../../utils/constants";
 export const fetchCars = async (
   model: string,
   make: string,
-  year: string,
+  minYear: string,
+  maxYear: string,
   minPrice: number,
   maxPrice: number
 ) => {
   const response = await client().get(
-    getCars(model, make, year, minPrice, maxPrice)
+    getCars(model, make, minYear, maxYear, minPrice, maxPrice)
   );
   console.log(response);
 

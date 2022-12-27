@@ -24,7 +24,8 @@ const MakeModel = () => {
       getCars({
         model: option ? option : "",
         make: filter.make ? filter.make : "",
-        year: filter.year ? filter.year : "",
+        minYear: filter.minYear,
+        maxYear: filter.maxYear,
         minPrice: filter.minPrice,
         maxPrice: filter.maxPrice,
       })
@@ -37,7 +38,8 @@ const MakeModel = () => {
       getCars({
         model: filter.model ? filter.model : "",
         make: option ? option : "",
-        year: filter.year ? filter.year : "",
+        minYear: filter.minYear,
+        maxYear: filter.maxYear,
         minPrice: filter.minPrice,
         maxPrice: filter.maxPrice,
       })

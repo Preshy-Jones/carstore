@@ -48,7 +48,7 @@ export const getCarsHandler = async (
   next: NextFunction
 ) => {
   try {
-    const { model, make, year } = req.query;
+    const { model, make, minYear, maxYear } = req.query;
 
     console.log(typeof make);
 
@@ -58,7 +58,7 @@ export const getCarsHandler = async (
     interface Filter {
       model?: string;
       make?: string;
-      year?: string;
+      year?: { $gte: number; $lte: number };
       price?: { $gt: number; $lt: number };
     }
     const filter: Record<string, any> = {};
@@ -68,9 +68,18 @@ export const getCarsHandler = async (
     if (make) {
       filter["make"] = make as string;
     }
-    if (year) {
-      filter["year"] = year as string;
+    // if (year) {
+    //   filter["year"] = year as string;
+    // }
+
+    if (minYear && maxYear) {
+      filter["year"] = { $gte: minYear, $lte: maxYear };
+    } else if (minYear) {
+      filter["year"] = { $gte: minYear };
+    } else if (maxYear) {
+      filter["year"] = { $lte: maxYear };
     }
+
     if (minPrice && maxPrice) {
       filter["price"] = { $gt: minPrice, $lt: maxPrice };
     } else if (minPrice) {
@@ -86,9 +95,17 @@ export const getCarsHandler = async (
         minPrice: filter.price.$gt,
         maxPrice: filter.price.$lt,
       }),
+      ...(filter.year && {
+        minYear: filter.year.$gte,
+        maxYear: filter.year.$lte,
+      }),
     };
 
-    const { ["price"]: price, ...filterPayload } = filterFormtatted;
+    const {
+      ["price"]: price,
+      ["year"]: year,
+      ...filterPayload
+    } = filterFormtatted;
 
     const cars = await Car.find(filter);
     res.status(200).send({

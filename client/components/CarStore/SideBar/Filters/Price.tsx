@@ -21,7 +21,8 @@ const Price = () => {
       getCars({
         model: filter.model ? filter.model : "",
         make: filter.make ? filter.make : "",
-        year: filter.year ? filter.year : "",
+        minYear: filter.minYear,
+        maxYear: filter.maxYear,
         minPrice: priceType === "min" ? parseInt(option) : filter.minPrice,
         maxPrice: priceType === "max" ? parseInt(option) : filter.maxPrice,
       })
@@ -43,7 +44,7 @@ const Price = () => {
           <Select
             options={prices}
             onChange={(e) => handlePriceChange(e, "min")}
-            price={true}
+            priceYear="price"
           />
         </div>
         <div>
@@ -51,7 +52,7 @@ const Price = () => {
           <Select
             options={prices}
             onChange={(e) => handlePriceChange(e, "max")}
-            price={true}
+            priceYear="price"
           />
         </div>
       </div>

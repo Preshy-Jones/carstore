@@ -12,11 +12,11 @@ interface Props {
   // }[];
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   disabled?: boolean;
-  price?: boolean;
+  priceYear?: string;
 }
 
 const Select: //correct type for a select component with the options prop
-React.FC<Props> = ({ options, onChange, price, ...rest }) => {
+React.FC<Props> = ({ options, onChange, priceYear, ...rest }) => {
   return (
     <select
       className="w-full py-3 px-4 border border-[#ACBEB1] rounded-md col-start-2 col-end-4"
@@ -24,10 +24,10 @@ React.FC<Props> = ({ options, onChange, price, ...rest }) => {
       {...rest}
     >
       <option value="">Any</option>
-      {options && price
+      {options && priceYear
         ? options.map((option: number) => (
             <option key={option} value={option}>
-              {`£${priceSplitter(option)}`}
+              {priceYear === "price" ? `£${priceSplitter(option)}` : option}
             </option>
           ))
         : options.map((option: any) => (

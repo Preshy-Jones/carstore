@@ -9,7 +9,8 @@ export interface CarState {
   filter: {
     model: string;
     make: string;
-    year: string;
+    minYear: string;
+    maxYear: string;
     minPrice: number;
     maxPrice: number;
   };
@@ -23,7 +24,8 @@ const initialState: CarState = {
   filter: {
     model: "",
     make: "",
-    year: "",
+    minYear: "",
+    maxYear: "",
     minPrice: 0,
     maxPrice: 0,
   },
@@ -34,7 +36,8 @@ const initialState: CarState = {
 interface CarPayload {
   model: string;
   make: string;
-  year: string;
+  minYear: string;
+  maxYear: string;
   minPrice: number;
   maxPrice: number;
 }
@@ -42,9 +45,16 @@ interface CarPayload {
 export const getCars = createAsyncThunk(
   "cart/getCars",
   async (payload: CarPayload, thunkAPI) => {
-    const { model, make, year, minPrice, maxPrice } = payload;
+    const { model, make, minYear, maxYear, minPrice, maxPrice } = payload;
     try {
-      return await carService.fetchCars(model, make, year, minPrice, maxPrice);
+      return await carService.fetchCars(
+        model,
+        make,
+        minYear,
+        maxYear,
+        minPrice,
+        maxPrice
+      );
     } catch (error) {
       return thunkAPI.rejectWithValue("something went wrong");
     }

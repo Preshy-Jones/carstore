@@ -12,7 +12,8 @@ const Store = () => {
       getCars({
         model: "",
         make: "",
-        year: "",
+        minYear: "",
+        maxYear: "",
         minPrice: 0,
         maxPrice: 0,
       })
