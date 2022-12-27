@@ -6,16 +6,24 @@ import corsOptions from "./config/corsOptions";
 import cors from "cors"
 const app = express();
 
-app.use(cors(corsOptions));
-app.use(express.json());
+
 dotenv.config();
 
-app.use("/", require("./routes"));
+
+
+app.use(cors(corsOptions));
+app.use(express.json());
 
 
 
 app.use(notFoundHandler);
 app.use(errorHandler);
+
+
+app.use("/", require("./routes"));
+
+
+
 
 const mongooseConnect = async () => {
   // console.log(process.env.DB_CONNECT);
