@@ -9,6 +9,12 @@ const validateResource_1 = __importDefault(require("../middlewares/validateResou
 const car_schema_1 = require("../schema/car.schema");
 const router = express_1.default.Router();
 router.post("/", (0, validateResource_1.default)(car_schema_1.createCarSchema), store_1.createCarHandler);
-router.get("/:carId", store_1.getCarHandler);
+router.get("/car/:carId", store_1.getCarHandler);
 router.get("/", store_1.getCarsHandler);
+router.post("/model", store_1.createModelHandler);
+router.get("/models", store_1.getModelsHandler);
+router.get("/models/model/:modelId", store_1.getSingleModelHandler);
+router.post("/makes", store_1.createMakeHandler);
+router.get("/makes", store_1.getMakesHandler);
+router.get("/makes/make/:makeId", store_1.getSingleMakeHandler);
 module.exports = router;
