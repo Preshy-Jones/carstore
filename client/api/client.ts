@@ -3,7 +3,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 const client = () => {
   const instance = axios.create({
     baseURL: "https://carstore-4xsa.vercel.app",
-    withCredentials: true,
+    withCredentials: false,
   });
 
   instance.interceptors.request.use(
