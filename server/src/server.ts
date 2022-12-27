@@ -3,16 +3,20 @@ import dotenv from "dotenv";
 import mongoose, { ConnectOptions } from "mongoose";
 import { errorHandler, notFoundHandler } from "./middlewares";
 import corsOptions from "./config/corsOptions";
-import cors from "cors"
+import cors from "cors";
 const app = express();
 
-app.use(cors(corsOptions));
-app.use(express.json());
 dotenv.config();
 
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://carstore-vert.vercel.app"],
+  })
+);
+
+app.use(express.json());
+
 app.use("/", require("./routes"));
-
-
 
 app.use(notFoundHandler);
 app.use(errorHandler);
