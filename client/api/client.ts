@@ -3,12 +3,12 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 const client = () => {
   const instance = axios.create({
     baseURL: "https://carstore-4xsa.vercel.app",
-    withCredentials: false,
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
+    withCredentials: true,
+    // headers: {
+    //   Accept: "application/json",
+    //   "Content-Type": "application/json",
+    //   "Access-Control-Allow-Origin": "*",
+    // },
   });
 
   instance.interceptors.request.use(

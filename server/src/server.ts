@@ -3,21 +3,25 @@ import dotenv from "dotenv";
 import mongoose, { ConnectOptions } from "mongoose";
 import { errorHandler, notFoundHandler } from "./middlewares";
 import corsOptions from "./config/corsOptions";
-import cors from "cors"
+import cors from "cors";
 const app = express();
 
-
 dotenv.config();
-
-
 
 app.use(cors(corsOptions));
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  if (req.method == "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+    return res.status(200).json({});
+  }
 
-app.use(function (request, response, next) {
-  response.header("Access-Control-Allow-Origin", "*");
-  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
