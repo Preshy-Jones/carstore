@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
 const client = () => {
   const instance = axios.create({
-    baseURL: "https://carstore.herokuapp.com",
+    baseURL: "https://carstore-4xsa.vercel.app",
     withCredentials: true,
   });
 
