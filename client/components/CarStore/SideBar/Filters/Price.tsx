@@ -1,6 +1,33 @@
 import React from "react";
+import { getCars } from "../../../../features/car/carSlice";
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
+import Select from "../../../ui/select";
 
 const Price = () => {
+  const dispatch = useAppDispatch();
+  const { isLoading, filter, models } = useAppSelector((state) => state.car);
+  const prices = [
+    5000, 7500, 10000, 12500, 15000, 17500, 20000, 25000, 30000, 35000, 40000,
+    45000, 50000,
+  ];
+
+  const handlePriceChange = (
+    e: React.ChangeEvent<HTMLSelectElement>,
+    priceType: string
+  ) => {
+    console.log(e.target.value);
+    const option = e.target.value;
+    dispatch(
+      getCars({
+        model: filter.model ? filter.model : "",
+        make: filter.make ? filter.make : "",
+        year: filter.year ? filter.year : "",
+        minPrice: priceType === "min" ? parseInt(option) : filter.minPrice,
+        maxPrice: priceType === "max" ? parseInt(option) : filter.maxPrice,
+      })
+    );
+  };
+
   return (
     <div className="mb-6">
       <p className="text-[14px] border border-neutralGreyLight p-4 mb-4">
@@ -13,37 +40,19 @@ const Price = () => {
       <div className="grid grid-cols-2 gap-x-4">
         <div>
           <label className="text-[14px]">From</label>
-          <select className="w-full py-3 px-4 border border-[#ACBEB1] rounded-md col-start-2 col-end-4">
-            <option value="">Any</option>
-            <option value="citroen">Citroen</option>
-            <option value="dacia">Dacia</option>
-            <option value="fiat">Fiat</option>
-            <option value="ford">Ford</option>
-            <option value="kia">Kia</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="seat">Seat</option>
-            <option value="skoda">Skoda</option>
-            <option value="Toyota">Citroen</option>
-            <option value="vauxhall">Vauxhall</option>
-            <option value="volkswagen">Volkswagen</option>
-          </select>
+          <Select
+            options={prices}
+            onChange={(e) => handlePriceChange(e, "min")}
+            price={true}
+          />
         </div>
         <div>
           <label className="text-[14px]">To</label>
-          <select className="w-full py-3 px-4 border border-[#ACBEB1] rounded-md col-start-2 col-end-4">
-            <option value="">Any</option>
-            <option value="citroen">Citroen</option>
-            <option value="dacia">Dacia</option>
-            <option value="fiat">Fiat</option>
-            <option value="ford">Ford</option>
-            <option value="kia">Kia</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="seat">Seat</option>
-            <option value="skoda">Skoda</option>
-            <option value="Toyota">Citroen</option>
-            <option value="vauxhall">Vauxhall</option>
-            <option value="volkswagen">Volkswagen</option>
-          </select>
+          <Select
+            options={prices}
+            onChange={(e) => handlePriceChange(e, "max")}
+            price={true}
+          />
         </div>
       </div>
     </div>
