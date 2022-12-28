@@ -14,7 +14,9 @@ const StoreLayout = ({ children }: { children: React.ReactNode }) => {
         <SideBar />
       </div>
       <main className="col-start-4 col-end-15">{children}</main>
-      <Footer />
+      <div className=" col-start-1 col-end-15 ">
+        <Footer />
+      </div>
     </div>
   );
 };

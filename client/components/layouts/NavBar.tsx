@@ -1,14 +1,15 @@
 import React from "react";
-import Logo from "../../assets/logo.svg";
 import Image from "next/image";
 import { AiFillHeart } from "react-icons/ai";
 import { FaUserAlt } from "react-icons/fa";
+import Logo from "../ui/logo";
 
 const NavBar = () => {
   return (
     <div className="flex font-robotoserif justify-between items-center py-5 bg-brandLightest border-t-[0.5rem] border-t-brandMain border-b-brandMain border-b-[0.08rem] px-10">
       <div className="justify-self-start flex-3">
-        <h1 className="text-[#DB6959] font-extrabold text-[2rem]">CAZOO</h1>
+        <Logo />
+        {/* <h1 className="text-[#DB6959] font-extrabold text-[2rem]">CAZOO</h1> */}
       </div>
       <div className="flex-4">
         <ul className="flex justify-around font-semibold">

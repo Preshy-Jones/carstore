@@ -11,8 +11,13 @@ module.exports = {
         brandMain: "#BFD3C5",
         primaryMain: "#D14532",
         primaryLight: "#E8A298",
+        secondaryMain: "#212121",
         borderMain: "#ACBEB1",
-        neutralGreyLight:"#DDDDDD"
+        neutralGreyLight: "#DDDDDD",
+        backgroundDark: "#454545",
+        backgroundDarker: "#212121",
+        textPrimary: "#212121",
+        successMain: "#287D3C"
       },
       fontFamily: {
         body: ["Montserrat"],
@@ -100,6 +105,7 @@ module.exports = {
         13: "repeat(13, minmax(0, 1fr))",
         14: "repeat(14, minmax(0, 1fr))",
         "3a": "repeat(3, minmax(0, auto))",
+        "4a": "repeat(4, minmax(0, auto))",
         "6a": "repeat(6, minmax(0, auto))",
         "7a": "repeat(7, minmax(0, auto))",
         "6s": "repeat(6, 1fr)",
