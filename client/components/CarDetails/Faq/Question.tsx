@@ -6,7 +6,7 @@ interface Props {
   title: string;
 }
 
-const Question: React.FC<Props> = ({ questionComponent,title }) => {
+const Question: React.FC<Props> = ({ questionComponent, title }) => {
   const [questionOpen, setQuestionOpen] = useState<Boolean>(false);
   return (
     <div
@@ -18,9 +18,7 @@ const Question: React.FC<Props> = ({ questionComponent,title }) => {
           questionOpen ? "mb-3" : `border-b-borderMain border-b`
         } py-4`}
       >
-        <h3 className="font-semibold">
-          {title}
-        </h3>
+        <h3 className={`${questionOpen ? "font-semibold" : ""}`}>{title}</h3>
         <div className="flex">
           {questionOpen ? (
             <MinusIcon color="#D14532" />

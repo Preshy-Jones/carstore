@@ -5,6 +5,10 @@ import StoreLayout from "../components/layouts/StoreLayout";
 import FinanceStats from "../components/CarStore/FinanceStats";
 import Store from "../components/CarStore/Store";
 import { NextPageWithLayout } from "./_app";
+import CreateAlert from "../components/CarStore/CreateAlert";
+import Browser from "../components/CarStore/Browser";
+import GuideLine from "../components/CarStore/GuideLine";
+import CommonQuestions from "../components/CarStore/CommonQuestions";
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -33,6 +37,10 @@ const Home: NextPageWithLayout = () => {
           </p>
           <FinanceStats />
           <Store />
+          <CreateAlert />
+          <Browser />
+          <GuideLine />
+          <CommonQuestions />
         </div>
       </main>
     </>
