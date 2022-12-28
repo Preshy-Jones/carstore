@@ -1,4 +1,15 @@
 export { default as CarIcon } from "./CarIcon";
-export {default as GalleryIcon } from "./GalleryIcon";
-export {default as RevolveIcon } from "./RevolveIcon";
-export {default as AlertIcon} from "./AlertIcon";
+export { default as GalleryIcon } from "./GalleryIcon";
+export { default as RevolveIcon } from "./RevolveIcon";
+export { default as AlertIcon } from "./AlertIcon";
+export { default as ShieldIcon } from "./ShieldIcon";
+export { default as MOTIcon } from "./MOTIcon";
+export { default as SpeedMeterIcon } from "./SpeedMeterIcon";
+export { default as BootSpaceIcon } from "./BootSpaceIcon";
+export { default as FuelCapacityIcon } from "./FuelCapacityIcon";
+export { default as CarArrowIcon } from "./CarArrowIcon";
+export { default as EngineIcon } from "./EngineIcon";
+export { default as VehicleTaxIcon } from "./VehicleTaxIcon";
+export { default as InsuranceIcon } from "./InsuranceIcon";
+export { default as MinusIcon } from "./MinusIcon";
+export { default as PlusIcon } from "./PlusIcon";

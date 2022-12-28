@@ -24,3 +24,24 @@ export const purchaseFlowContent = [
     moreInfo: "Our money back guarantee",
   },
 ];
+
+export const summaryDummyData = [
+  {
+    title: "Reg date",
+    value: "May 2016",
+  },
+  { title: "Drive type", value: "Front wheel drive" },
+  { title: "Transmmission", value: "Manual" },
+  { title: "Registration number", value: "NA16 VTP" },
+  { title: "Mileage", value: "50,715 miles" },
+  { title: "Seats", value: "5" },
+  { title: "Engine", value: "1.2L" },
+  { title: "Body type", value: "5 door Hatchback" },
+  { title: "Exterior colour", value: "Blue" },
+  { title: "Drive type", value: "Front wheel drive" },
+  { title: "Registration number", value: "NA16 VTP" },
+  { title: "Previous owners", value: "1" },
+  { title: "Number of keys", value: "1" },
+  { title: "Emissions", value: "115g/km (band C)" },
+  { title: "ULEZ compliant", value: "Yes" },
+];

@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       colors: {
         brandLightest: "#F5F8F6",
+        brandLight: "#E5EDE8",
         brandMain: "#BFD3C5",
         primaryMain: "#D14532",
         primaryLight: "#E8A298",
@@ -17,7 +18,8 @@ module.exports = {
         backgroundDark: "#454545",
         backgroundDarker: "#212121",
         textPrimary: "#212121",
-        successMain: "#287D3C"
+        textSecondary: "#6B6B6B",
+        successMain: "#287D3C",
       },
       fontFamily: {
         body: ["Montserrat"],

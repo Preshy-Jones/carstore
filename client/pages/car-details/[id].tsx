@@ -1,7 +1,12 @@
 import Image from "next/image";
 import React from "react";
 import CarSpecs from "../../components/CarDetails/CarSpecs";
+import Features from "../../components/CarDetails/Features";
 import PurchaseFlow from "../../components/CarDetails/PurchaseFlow";
+import RunningCosts from "../../components/CarDetails/RunningCosts";
+import ServiceHistory from "../../components/CarDetails/ServiceHistory";
+import Specs from "../../components/CarDetails/Specs";
+import Summary from "../../components/CarDetails/Summary";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 
 const CarDetails = () => {
@@ -20,6 +25,11 @@ const CarDetails = () => {
           </div>
           <CarSpecs />
           <PurchaseFlow />
+          <Summary />
+          <Features />
+          <Specs />
+          <RunningCosts />
+          <ServiceHistory />
         </div>
       </div>
     </DefaultLayout>
