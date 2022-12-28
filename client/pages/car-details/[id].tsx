@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import CarSpecs from "../../components/CarDetails/CarSpecs";
+import CazooQuality from "../../components/CarDetails/CazooQuality";
+import Faq from "../../components/CarDetails/Faq";
 import Features from "../../components/CarDetails/Features";
 import PurchaseFlow from "../../components/CarDetails/PurchaseFlow";
 import RunningCosts from "../../components/CarDetails/RunningCosts";
@@ -32,6 +34,8 @@ const CarDetails = () => {
           <ServiceHistory />
         </div>
       </div>
+      <CazooQuality />
+      <Faq/>
     </DefaultLayout>
   );
 };

@@ -2,7 +2,7 @@ import React, { MouseEvent } from "react";
 
 interface Props {
   color: string;
-  onClick: (event: MouseEvent) => void;
+  onClick?: (event: MouseEvent) => void;
 }
 const PlusIcon: React.FC<Props> = ({ color, ...rest }) => {
   return (
