@@ -26,12 +26,17 @@ export const createCarHandler = async (
 };
 
 export const getCarHandler = async (
-  req: Request<GetCarInput["params"]>,
+  req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
+    console.log("hello  there");
+    console.log(req.params.carId);
+
     const car = await Car.findById(req.params.carId);
+    console.log(car);
+
     res.status(200).send({
       success: true,
       message: "Car fetched successfully",

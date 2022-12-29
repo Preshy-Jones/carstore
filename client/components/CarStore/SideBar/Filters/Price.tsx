@@ -21,8 +21,8 @@ const Price = () => {
       getCars({
         model: filter.model ? filter.model : "",
         make: filter.make ? filter.make : "",
-        minYear: filter.minYear,
-        maxYear: filter.maxYear,
+        minYear: filter.minYear ? filter.minYear : "",
+        maxYear: filter.maxYear ? filter.maxYear : "",
         minPrice: priceType === "min" ? parseInt(option) : filter.minPrice,
         maxPrice: priceType === "max" ? parseInt(option) : filter.maxPrice,
       })

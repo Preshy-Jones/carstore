@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { FiHeart } from "react-icons/fi";
 import { Car } from "../../../types/car";
@@ -48,9 +49,11 @@ const Car: React.FC<Props> = ({ car }) => {
         </div>
 
         <div className="mt-4">
-          <button className="text-primaryMain border border-primaryMain w-full font-bold text-[18.72px] py-[0.75rem] px-[1rem] rounded-md">
-            View this car
-          </button>
+          <Link href={`/car-details/${car._id}`}>
+            <button className="text-primaryMain border border-primaryMain w-full font-bold text-[18.72px] py-[0.75rem] px-[1rem] rounded-md">
+              View this car
+            </button>
+          </Link>
         </div>
       </div>
     </div>

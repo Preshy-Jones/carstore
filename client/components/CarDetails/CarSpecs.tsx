@@ -7,15 +7,20 @@ import { CarIcon, GalleryIcon } from "../ui/icons";
 import { Md360 } from "react-icons/md";
 import { TbAlertCircle } from "react-icons/tb";
 import { AiFillCheckCircle } from "react-icons/ai";
+import { Car } from "../../types/car";
 
-const CarSpecs = () => {
+interface Props {
+  carDetails: Car;
+}
+
+const CarSpecs: React.FC<Props> = ({ carDetails }) => {
   return (
     <div>
       <div className="grid grid-cols-3 gap-x-12">
         <div className=" col-start-1 col-end-3">
           <div className="rounded-md">
             <Image
-              src="https://res.cloudinary.com/xxolcare/image/upload/v1671812544/carzoo/fiat500ash_yjy11s.webp"
+              src={carDetails.images[0]}
               alt="blah"
               width="761"
               height="417"
@@ -52,23 +57,25 @@ const CarSpecs = () => {
               All our cars have been thoroughly inspected and fully
               reconditioned. As with any used car, you should expect some
               general wear and tear relative to the car’s age and mileage.{" "}
-              <span className="text-primaryMain font-bold">Learn about our car quality standards</span>
+              <span className="text-primaryMain font-bold">
+                Learn about our car quality standards
+              </span>
             </p>
           </div>
         </div>
         <div className=" col-start-3 col-end-4">
-          <h1 className="text-[36px] font-semibold">Nissan Micra</h1>
+          <h1 className="text-[36px] font-semibold">{carDetails.title}</h1>
           <h2 className="font-semibold text-[20px]">1.2 Visia (AC)</h2>
           <div className="font-semibold grid grid-cols-4a text-[14px] gap-x-2 gap-y-2">
             <span className="bg-brandLightest rounded-[0.3125rem] p-[0.5rem]">
-              50,343 miles
+              {carDetails.milleage} miles
             </span>
             <span className="bg-brandLightest rounded-[0.3125rem] p-[0.5rem]">
-              2019 reg
-            </span>{" "}
+              {carDetails.year} reg
+            </span>
             <span className="bg-brandLightest rounded-[0.3125rem] p-[0.5rem]">
               Manual
-            </span>{" "}
+            </span>
             <span className="bg-brandLightest rounded-[0.3125rem] p-[0.5rem]">
               Petrol
             </span>
@@ -77,10 +84,12 @@ const CarSpecs = () => {
           <div className="bg-brandLightest p-6 mt- rounded-sm">
             <div className="flex justify-between mt-4">
               <h3 className="font-semibold text-[22px]">
-                £{priceSplitter(5000)}
+                £{priceSplitter(carDetails.price)}
               </h3>
               <div className="flex items-end">
-                <h3 className="font-semibold text-[22px] m-0 p-0">£80</h3>
+                <h3 className="font-semibold text-[22px] m-0 p-0">
+                  {carDetails.installment}
+                </h3>
                 <span className="text-[14px] mb-[0.1rem]">/month HP</span>
               </div>
             </div>

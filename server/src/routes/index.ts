@@ -16,7 +16,7 @@ import { createCarSchema, getCarSchema } from "../schema/car.schema";
 const router = express.Router();
 
 router.post("/cars", validateResource(createCarSchema), createCarHandler);
-router.get("/cars/:carId", getCarHandler);
+router.get("/cars/car/:carId", getCarHandler);
 router.get("/cars", getCarsHandler);
 
 router.post("/model", createModelHandler);

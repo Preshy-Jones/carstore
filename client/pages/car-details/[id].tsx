@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import client from "../../api/client";
 import CarSpecs from "../../components/CarDetails/CarSpecs";
 import CazooQuality from "../../components/CarDetails/CazooQuality";
 import Faq from "../../components/CarDetails/Faq";
@@ -11,7 +12,7 @@ import Specs from "../../components/CarDetails/Specs";
 import Summary from "../../components/CarDetails/Summary";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 
-const CarDetails = () => {
+const CarDetails = ({ carDetails }: any) => {
   return (
     <DefaultLayout>
       <div className="flex justify-center pt-6 font-robotoserif">
@@ -25,7 +26,7 @@ const CarDetails = () => {
             <span className="text-primaryMain mx-4">|</span>
             <h3 className="font-semibold text-primaryMain">Micra</h3>
           </div>
-          <CarSpecs />
+          <CarSpecs carDetails={carDetails} />
           <PurchaseFlow />
           <Summary />
           <Features />
@@ -35,9 +36,20 @@ const CarDetails = () => {
         </div>
       </div>
       <CazooQuality />
-      <Faq/>
+      <Faq />
     </DefaultLayout>
   );
 };
 
 export default CarDetails;
+
+export async function getServerSideProps({ params: { id } }: any) {
+  const data = await client().get(`/cars/car/${id}`);
+  // console.log(data);
+  const carDetails = data.data.car;
+  return {
+    props: {
+      carDetails: carDetails,
+    },
+  };
+}

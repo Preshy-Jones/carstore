@@ -24,8 +24,8 @@ const MakeModel = () => {
       getCars({
         model: option ? option : "",
         make: filter.make ? filter.make : "",
-        minYear: filter.minYear,
-        maxYear: filter.maxYear,
+        minYear: filter.minYear ? filter.minYear : "",
+        maxYear: filter.maxYear ? filter.maxYear : "",
         minPrice: filter.minPrice,
         maxPrice: filter.maxPrice,
       })
@@ -38,8 +38,8 @@ const MakeModel = () => {
       getCars({
         model: filter.model ? filter.model : "",
         make: option ? option : "",
-        minYear: filter.minYear,
-        maxYear: filter.maxYear,
+        minYear: filter.minYear ? filter.minYear : "",
+        maxYear: filter.maxYear ? filter.maxYear : "",
         minPrice: filter.minPrice,
         maxPrice: filter.maxPrice,
       })
@@ -63,11 +63,11 @@ const MakeModel = () => {
   return (
     <div className="mb-6">
       <div className="grid grid-cols-3 justify-between items-center">
-        <h3 className="mr-4 text-[14px]">Make</h3>
+        <h3 className="mr-4 text-[14px]">Model</h3>
         <Select options={models} onChange={handleChangeModel} />
       </div>
       <div className="justify-between items-center mt-4 grid grid-cols-3">
-        <h3 className="mr-4 text-[14px] col-start-1 col-end-2">Model</h3>
+        <h3 className="mr-4 text-[14px] col-start-1 col-end-2"> Make</h3>
         <Select
           options={makes}
           onChange={handleChangeMake}

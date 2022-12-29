@@ -30,7 +30,8 @@ React.FC<Props> = ({ options, onChange, priceYear, ...rest }) => {
               {priceYear === "price" ? `£${priceSplitter(option)}` : option}
             </option>
           ))
-        : options.map((option: any) => (
+        : options &&
+          options.map((option: any) => (
             <option key={option.name} value={option.name}>
               {capitalizeFirstLetter(option.name)}
             </option>

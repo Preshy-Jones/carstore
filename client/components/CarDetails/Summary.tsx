@@ -37,7 +37,7 @@ const Summary = () => {
             </div>
             <h2 className="mt-2 font-semibold">Cazoo warranty</h2>
             <div className="flex flex-col text-[14px] text-textPrimary mt-">
-              <span>90-day warranty and  </span>
+              <span>90-day warranty and </span>
               <span>RAC roadside assistance included</span>
             </div>
           </div>
@@ -75,7 +75,7 @@ const Summary = () => {
       </div>
       <div className="grid grid-cols-2 gap-y-1 divide-borderMain divide-y gap-x-8 mt-14">
         {summaryDummyData.map((data, index) => (
-          <div className="flex py-4">
+          <div key={index} className="flex py-4">
             <h2 className="mr-3">{data.title}</h2>
             <h2 className="font-semibold">{data.value}</h2>
           </div>
