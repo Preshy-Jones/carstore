@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { FiHeart } from "react-icons/fi";
 import { Car } from "../../../types/car";
+import Carousel from 'react-elastic-carousel'
 
 interface Props {
   car: Car;

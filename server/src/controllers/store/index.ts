@@ -31,11 +31,7 @@ export const getCarHandler = async (
   next: NextFunction
 ) => {
   try {
-    console.log("hello  there");
-    console.log(req.params.carId);
-
     const car = await Car.findById(req.params.carId);
-    console.log(car);
 
     res.status(200).send({
       success: true,
