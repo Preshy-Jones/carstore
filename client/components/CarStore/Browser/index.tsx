@@ -1,6 +1,11 @@
 import React from "react";
 import { TbH1 } from "react-icons/tb";
-import { byLocationData, byPopularMakesData, byPopularModelData, byTypeData } from "./BrowserContent";
+import {
+  byLocationData,
+  byPopularMakesData,
+  byPopularModelData,
+  byTypeData,
+} from "./BrowserContent";
 
 const Browser = () => {
   return (
@@ -11,7 +16,9 @@ const Browser = () => {
         </h1>
         <div className="grid grid-cols-3 mt-6 justify-items-center gap-y-2">
           {byPopularMakesData.map((data, index) => (
-            <h3 className="text-primaryMain font-semibold">{data}</h3>
+            <h3 key={index} className="text-primaryMain font-semibold">
+              {data}
+            </h3>
           ))}
         </div>
       </div>
@@ -21,7 +28,9 @@ const Browser = () => {
         </h1>
         <div className="grid grid-cols-3 mt-6 justify-items-center gap-y-2">
           {byPopularModelData.map((data, index) => (
-            <h3 className="text-primaryMain font-semibold">{data}</h3>
+            <h3 key={index} className="text-primaryMain font-semibold">
+              {data}
+            </h3>
           ))}
         </div>
       </div>
@@ -31,7 +40,9 @@ const Browser = () => {
         </h1>
         <div className="grid grid-cols-3 mt-6 justify-items-center gap-y-2">
           {byTypeData.map((data, index) => (
-            <h3 className="text-primaryMain font-semibold">{data}</h3>
+            <h3 key={index} className="text-primaryMain font-semibold">
+              {data}
+            </h3>
           ))}
         </div>
       </div>
@@ -41,7 +52,9 @@ const Browser = () => {
         </h1>
         <div className="grid grid-cols-3 mt-6 justify-items-center gap-y-2">
           {byLocationData.map((data, index) => (
-            <h3 className="text-primaryMain font-semibold">{data}</h3>
+            <h3 key={index} className="text-primaryMain font-semibold">
+              {data}
+            </h3>
           ))}
         </div>
       </div>

@@ -17,4 +17,6 @@ export const getCars = (
   minPrice: number,
   maxPrice: number
 ) =>
-  `/?model=${model}&make=${make}&minYear=${minYear}&maxYear=${maxYear}&minPrice=${minPrice}&maxPrice=${maxPrice}`;
+  `/cars?model=${model}&make=${make}&minYear=${minYear}&maxYear=${maxYear}&minPrice=${minPrice}&maxPrice=${maxPrice}`;
+
+export const getSingleCar = (id: string) => `/cars/car/${id}`;

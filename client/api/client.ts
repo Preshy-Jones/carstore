@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
 const client = () => {
   const instance = axios.create({
-    baseURL: "https://carstore-4xsa.vercel.app",
+    baseURL: "http://localhost:8000",
     withCredentials: false,
     // headers: {
     //   Accept: "application/json",
