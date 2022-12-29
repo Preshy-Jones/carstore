@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
 const client = () => {
   const instance = axios.create({
-    baseURL: "http://localhost:8000",
+    baseURL: "https://carzooo.herokuapp.com",
     withCredentials: false,
     // headers: {
     //   Accept: "application/json",
